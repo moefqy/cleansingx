@@ -1,0 +1,218 @@
+/* Root Variables */
+:root {
+    /* Dark mode base colors */
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --secondary-bg: #2a2a2a;
+    --accent-color: #808080;
+    --btn-bg-color: #f3d25a;
+    --separator-color: rgba(255, 255, 255, 0.2);
+
+    /* Light mode base colors */
+    --light-bg-color: #f5f5f5;
+    --light-text-color: #000000;
+    --light-secondary-bg: #f1f1f1;
+    --light-accent-color: #ddd;
+    --light-btn-bg-color: #000000;
+    --light-separator-color: rgba(0, 0, 0, 0.2);
+
+    /* Common colors */
+    --inactive-color: #ccc;
+    --hover-color: #000000;
+    --header-color: #000000;
+    --header-text-color: #f3d25a;
+
+    /* Font sizes */
+    --font-size-xlarge: 1.2em;
+    --font-size-large: 1em;
+    --font-size-small: 0.9em;
+}
+
+/* Base Styles */
+body {
+    font-family: Arial, sans-serif;
+    font-size: var(--font-size-small);
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    box-sizing: border-box;
+    background-color: var(--light-bg-color);
+    color: var(--light-text-color);
+}
+
+body.dark-theme {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--header-color);
+    border-bottom: 1px solid var(--light-separator-color);
+    color: var(--light-bg-color);
+}
+
+.logo {
+    height: 30px;
+}
+
+.header-text {
+    font-size: var(--font-size-xlarge);
+    font-weight: bold;
+    color: var(--header-text-color);
+    flex-grow: 1;
+    margin-left: 8px;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: var(--font-size-large);
+    cursor: pointer;
+    color: inherit;
+}
+
+/* Navigation Styles */
+.navbar {
+    display: flex;
+    background-color: var(--light-secondary-bg);
+    border-bottom: 1px solid var(--light-separator-color);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: var(--font-size-small);
+    color: inherit;
+}
+
+.tab-btn:hover {
+    font-weight: bold;
+}
+
+.tab-btn.active {
+    background-color: var(--light-accent-color);
+    border-bottom: 3px solid var(--hover-color);
+    font-weight: bold;
+}
+
+/* Content Styles */
+.tab-content {
+    display: none;
+    padding: 10px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Form Elements */
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 2px 0;
+    border: 1px solid var(--inactive-color);
+    border-radius: 4px;
+    background-color: var(--light-bg-color);
+    color: var(--light-text-color);
+}
+
+input:focus {
+    outline: none;
+    border: 2px solid var(--hover-color);
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    border: 1px solid var(--inactive-color);
+    background-color: var(--light-bg-color);
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+input[type="checkbox"]:checked {
+    background-color: var(--light-btn-bg-color);
+    border-color: var(--inactive-color);
+}
+
+/* Info Section Styles */
+.info-section {
+    padding: 8px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--light-separator-color);
+}
+
+.info-section:last-child {
+    border-bottom: none !important;
+    margin-bottom: 0;
+}
+
+.info-section h3 {
+    margin: 0 0 4px 0;
+    font-size: var(--font-size-large);
+    color: var(--light-text-color);
+}
+
+.info-section p {
+    margin: 4px 0;
+    font-size: var(--font-size-small);
+}
+
+.info-section a {
+    display: inline-block;
+    margin-right: 8px;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: var(--font-size-small);
+}
+
+.social-links {
+    margin-top: 4px;
+}
+
+/* Dark Theme */
+body.dark-theme .header {
+    background-color: var(--header-color);
+    border-bottom: 1px solid var(--separator-color);
+    color: var(--bg-color);
+}
+
+body.dark-theme .navbar {
+    background-color: var(--secondary-bg);
+    border-bottom: 1px solid var(--separator-color);
+}
+
+body.dark-theme .tab-btn.active {
+    background-color: var(--accent-color);
+    border-bottom: 3px solid var(--light-accent-color);
+}
+
+body.dark-theme input {
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+    border: 1px solid var(--separator-color);
+}
+
+body.dark-theme [type="checkbox"]:checked {
+    background-color: var(--btn-bg-color);
+    border-color: var(--inactive-color);
+}
+
+body.dark-theme .info-section h3 {
+    color: var(--text-color);
+}
+
+body.dark-theme .info-section {
+    border-bottom: 1px solid var(--separator-color);
+}

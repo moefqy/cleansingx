@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CleansingX</title>
+  <link rel="stylesheet" href="../css/popup.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <img class="logo" src="../img/icon-128.png" alt="Logo">
+    <span class="header-text">CleansingX</span>
+    <button id="themeToggle" class="theme-toggle">🌙</button>
+  </header>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <button class="tab-btn active" data-tab="home">Home</button>
+    <button class="tab-btn" data-tab="settings">Settings</button>
+    <button class="tab-btn" data-tab="info">More Info</button>
+  </nav>
+
+  <!-- Tab Content -->
+  <main>
+    <section id="home" class="tab-content active">
+      <label><input type="checkbox" id="hideWords"> Hide Words</label><br>
+      <label><input type="checkbox" id="hideURL"> Hide URL</label><br>
+      <label><input type="checkbox" id="hideUsername"> Hide Username</label>
+    </section>
+
+    <section id="settings" class="tab-content">
+      <label>
+        Block Words (comma-separated):<br>
+        <input type="text" id="blockWords" placeholder="e.g., word1,word2">
+      </label><br><br>
+      <label>
+        Block URLs (comma-separated):<br>
+        <input type="text" id="blockURL" placeholder="e.g., url1.com,url2.com">
+      </label><br><br>
+      <label>
+        Block Usernames (comma-separated):<br>
+        <input type="text" id="blockUsername" placeholder="e.g., @abc,@def">
+      </label><br><br>
+    </section>
+
+    <section id="info" class="tab-content">
+      <div class="info-section">
+        <h3>About CleansingX</h3>
+        <p>A content filtering extension for X.com (formerly Twitter) to enhance your browsing experience.</p>
+        <p>Version 1.0</p>
+      </div>
+    
+      <div class="info-section">
+        <h3>Developer</h3>
+        <p>A Muh Mufqi Zuhudi</p>
+        <div class="social-links">
+          <a href="https://moefqy.engineer" target="_blank">Website</a>
+          <a href="https://github.com/moefqy" target="_blank">GitHub</a>
+          <a href="https://linkedin.com/in/moefqy" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    
+      <div class="info-section">
+        <h3>Documentation</h3>
+        <a href="https://github.com/moefqy/CleansingX" target="_blank">Source Code</a>
+        <a href="https://github.com/moefqy/CleansingX/issues" target="_blank">Report Issues</a>
+      </div>
+    
+      <div class="info-section">
+        <h3>Support</h3>
+        <p>Questions or suggestions?</p>
+        <a href="mailto:mail@moefqy.engineer">Contact Developer</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/popup.js"></script>
+</body>
+</html>
