@@ -1,3 +1,5 @@
+// BrowserAPI compatibility check for browser.*/chrome.*
+const browserAPI = typeof browser !== 'undefined' ? browser : chrome;
 
 document.addEventListener('DOMContentLoaded', () => {
   const checkboxes = {
@@ -15,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeToggle = document.getElementById('themeToggle');
 
   // Load saved state
-  browser.storage.local.get([
+  browserAPI.storage.local.get([
     'hideWords', 'hideURL', 'hideUsername', 
     'blockWords', 'blockURL', 'blockUsername', 'darkTheme'
   ]).then((result) => {
@@ -42,11 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
   Object.keys(checkboxes).forEach(key => {
     checkboxes[key].addEventListener('change', (e) => {
       const isEnabled = e.target.checked;
-      browser.storage.local.set({ [key]: isEnabled });
+      browserAPI.storage.local.set({ [key]: isEnabled });
       
       // Send message to content script
-      browser.tabs.query({ active: true, currentWindow: true }).then((tabs) => {
-        browser.tabs.sendMessage(tabs[0].id, { [key]: isEnabled });
+      browserAPI.tabs.query({ active: true, currentWindow: true }).then((tabs) => {
+        browserAPI.tabs.sendMessage(tabs[0].id, { [key]: isEnabled });
       });
     });
   });
@@ -61,11 +63,11 @@ document.addEventListener('DOMContentLoaded', () => {
         .filter(value => value !== '');
       
       // Save filter values
-      browser.storage.local.set({ [key]: filterValues });
+      browserAPI.storage.local.set({ [key]: filterValues });
       
       // Send message to content script
-      browser.tabs.query({ active: true, currentWindow: true }).then((tabs) => {
-        browser.tabs.sendMessage(tabs[0].id, { [key]: filterValues });
+      browserAPI.tabs.query({ active: true, currentWindow: true }).then((tabs) => {
+        browserAPI.tabs.sendMessage(tabs[0].id, { [key]: filterValues });
       });
     });
   });
@@ -74,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
   themeToggle.addEventListener('click', () => {
     const isDark = document.body.classList.toggle('dark-theme');
     themeToggle.textContent = isDark ? '☀️' : '🌙';
-    browser.storage.local.set({ darkTheme: isDark });
+    browserAPI.storage.local.set({ darkTheme: isDark });
   });
 
   // Tab switching

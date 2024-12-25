@@ -1,3 +1,6 @@
+// BrowserAPI compatibility check for browser.*/chrome.*
+const browserAPI = typeof browser !== 'undefined' ? browser : chrome;
+
 let filters = {
   hideWords: false,
   blockWords: [],
@@ -49,6 +52,7 @@ function matchURL(urls, pattern) {
 
     // Log for debugging
     console.log('CleansingX: Matching url pattern:', normalizedPattern);
+    console.log('CleansingX: Found url:', normalizedUrl.length);
     console.log('CleansingX: First 5 url:', normalizedUrl.slice(0, 5));
 
     // Filter url to keep only http/https url
@@ -62,6 +66,7 @@ function matchURL(urls, pattern) {
       url.replace(/^https?:\/\/(www\.)?/i, '')
     );
 
+    // Log for debugging
     console.log('CleansingX: Cleaned URLs:', urlMatch);
 
     // Handle different wildcard patterns
@@ -107,7 +112,7 @@ function matchUsername(usernames, pattern) {
     const normalizedPatternUrl = normalizedPattern.replace('@', 'https://x.com/');
      
     // Log for debugging
-    console.log('CleansingX: Generated pattern URL:', normalizedPatternUrl);
+    console.log('CleansingX: Generated pattern username link:', normalizedPatternUrl);
      
     // Check if url exists in usernames array
     const urlMatch = normalizedUsername.some(username => username === normalizedPatternUrl);
@@ -191,7 +196,7 @@ function updateFilters(message) {
 
 function initializeFilters() {
   try {
-    browser.storage.local.get(['hideWords', 'blockWords', 'hideURL', 'blockURL', 'hideUsername', 'blockUsername'])
+    browserAPI.storage.local.get(['hideWords', 'blockWords', 'hideURL', 'blockURL', 'hideUsername', 'blockUsername'])
       .then((result) => {
         console.log('CleansingX: Storage result:', result);
         filters.hideWords = result.hideWords || false;
@@ -254,7 +259,7 @@ if (document.readyState === 'loading') {
 }
 
 // Listen for messages from background script
-browser.runtime.onMessage.addListener((message) => {
+browserAPI.runtime.onMessage.addListener((message) => {
   console.log('CleansingX: Received message:', message);
   updateFilters(message);
 });

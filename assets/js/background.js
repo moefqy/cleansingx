@@ -1,14 +1,17 @@
+// BrowserAPI compatibility check for browser.*/chrome.*
+const browserAPI = typeof browser !== 'undefined' ? browser : chrome;
+
 // Single initialization listener
-browser.runtime.onInstalled.addListener(() => {
+browserAPI.runtime.onInstalled.addListener(() => {
   // Initialize default settings
-  browser.storage.local.get([
+  browserAPI.storage.local.get([
     'hideWords', 'blockWords',
     'hideURL', 'blockURL',
     'hideUsername', 'blockUsernames'
   ])
   .then((result) => {
     if (!result.hideWords && !result.blockWords) {
-      browser.storage.local.set({
+      browserAPI.storage.local.set({
         hideWords: result.hideWords || false,
         blockWords: result.blockWords || [],
         hideURL: result.hideURL || false,
@@ -22,12 +25,12 @@ browser.runtime.onInstalled.addListener(() => {
 });
 
 // Listen for tab updates
-browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+browserAPI.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.status === 'complete' && tab.url) {
     console.log('CleansingX: Tab updated:', tab.url);
     
     // Get stored filters
-    browser.storage.local.get([
+    browserAPI.storage.local.get([
       'hideWords', 
       'blockWords',
       'hideURL',
@@ -37,7 +40,7 @@ browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     ])
     .then((result) => {
       // Send message to content script
-      return browser.tabs.sendMessage(tabId, {
+      return browserAPI.tabs.sendMessage(tabId, {
         hideWords: result.hideWords || false,
         blockWords: result.blockWords || [],
         hideURL: result.hideURL || false,
@@ -54,12 +57,12 @@ browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 });
 
 // Listen for filter updates from popup
-browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
+browserAPI.runtime.onMessage.addListener((message, sender, sendResponse) => {
   // Broadcast to all tabs
-  browser.tabs.query({})
+  browserAPI.tabs.query({})
     .then(tabs => {
       tabs.forEach(tab => {
-        browser.tabs.sendMessage(tab.id, {
+        browserAPI.tabs.sendMessage(tab.id, {
           hideWords: message.hideWords,
           blockWords: message.blockWords,
           hideURL: message.hideURL,
@@ -75,6 +78,6 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 // Establish connection with content script
-browser.runtime.onConnect.addListener((port) => {
+browserAPI.runtime.onConnect.addListener((port) => {
   console.log('CleansingX: Connection established with content script');
 });
