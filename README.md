@@ -14,10 +14,17 @@ CleansingX is a Firefox extension that helps filter and hide unwanted content on
 - **Real-time Filtering**: Updates content filtering as you scroll
 - **Persistent Settings**: Your filters and preferences are saved across sessions
 
+## Download
+
+CleansingX is available as a browser extension on the official stores: 
+
+<a href="https://addons.mozilla.org/firefox/addon/cleansingx"><img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" alt="Get it on Firefox" height="50"/></a>
+<a href="https://chromewebstore.google.com/detail/cleansingx/ckacocgddaaajndbgkokdoficdhjjcmk"><img src="https://developer.chrome.com/static/docs/webstore/branding/image/HRs9MPufa1J1h5glNhut.png" alt="Get it on Chrome" height="50"/></a>
+
 ## Installation
 
-1. Go to the [Firefox Add-ons page](https://addons.mozilla.org/en-US/firefox/addon/cleansingx-twitter-x-filter).
-2. Click on **Add to Firefox** to install the extension.
+1. Go to the download link.
+2. Click on **Add** to install the extension.
 3. A popup will appear. Click **Add** to confirm and complete the installation.
 
 ## Usage
