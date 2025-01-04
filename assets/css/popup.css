@@ -32,9 +32,14 @@
 body {
     font-family: Arial, sans-serif;
     font-size: var(--font-size-small);
-    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    margin: 0 auto;
     padding: 0;
     width: 300px;
+    max-width: 100%;
     box-sizing: border-box;
     background-color: var(--light-bg-color);
     color: var(--light-text-color);
@@ -45,12 +50,19 @@ body.dark-theme {
     color: var(--text-color);
 }
 
+main{
+    width: 100%;
+    box-sizing: border-box;
+}
+
 /* Header Styles */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
     background-color: var(--header-color);
     border-bottom: 1px solid var(--light-separator-color);
     color: var(--light-bg-color);
@@ -58,6 +70,7 @@ body.dark-theme {
 
 .logo {
     height: 30px;
+    padding: 0 10px;
 }
 
 .header-text {
@@ -70,6 +83,7 @@ body.dark-theme {
 
 .theme-toggle {
     background: none;
+    padding: 0 10px;
     border: none;
     font-size: var(--font-size-large);
     cursor: pointer;
@@ -79,6 +93,8 @@ body.dark-theme {
 /* Navigation Styles */
 .navbar {
     display: flex;
+    width: 100%;
+    box-sizing: border-box;
     background-color: var(--light-secondary-bg);
     border-bottom: 1px solid var(--light-separator-color);
 }
